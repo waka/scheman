@@ -250,11 +250,19 @@ module Scheman
         end
 
         rule(:unique_key) do
-          str("TODO")
+          (
+            case_insensitive_str("unique") >>
+            spaces >>
+            normal_index
+          ).as(:unique_key)
         end
 
         rule(:foreign_key) do
-          str("TODO")
+          (
+            case_insensitive_str("foreign key") >>
+            spaces >>
+            normal_index
+          ).as(:unique_key)
         end
 
         rule(:normal_index) do
